@@ -1,0 +1,10 @@
+
+/*  Module 11: Exercise 2 Product order with Event Incrementor  */
+
+s.products = ";"+ digitalData.product.productName +";"+ digitalData.product.productTotalUnits +";"+ digitalData.product.productTotalRevenue +";event5="+ digitalData.product.productTax +"|event6="+ digitalData.product.productPostage;
+
+s.purchaseID = digitalData.cart.cartID;
+//s.purchaseID = _satellite.getVar('transactionID');
+//s.purchaseID = s.transactionID;
+
+s.currencyCode="gbp";

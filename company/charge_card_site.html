@@ -1,0 +1,202 @@
+
+<!-- saved from url=(0067)http://ats-sb.adobe.com/jjsite/include/include/charge_card_site.php -->
+<html><script>"use strict";!function(){var a,b,c,d,e=window,f="adobe.experienceCloud.debugger",g={};a={getSummary:{},getDTMSwitchInformation:{},setDebug:{},useStagingLibrary:{},insertDTM:{},getLaunchSwitchInformation:{},setLaunchDebug:{},targetMboxHighlightOn:{},targetMboxHighlightOff:{}},b={getPerformance:{}},c={blockDTM:{},insertLaunchOrDtmEmbedCode:{},enableTargetMboxTraces:{},enableTargetMboxDisable:{},enableTargetMboxDebug:{},getTargetToken:{}},d={},g.pageScript=a,g.contentScript=b,g.backgroundScript=c,g.appScript=d,e[f]={},e[f].api=g}();!function(){"use strict";function a(){return!(!q._satellite||!q._satellite._container)}function b(){return!(!q._satellite||!q._satellite.configurationSettings)}function c(){var a=[];if(!q._satellite||!q._satellite._container||!q._satellite._container.extensions)return a;var b=q._satellite._container.extensions;for(var c in b){var d=b[c];d&&d.displayName&&a.push({name:c,displayName:d.displayName,hostedLibFilesBaseUrl:d.hostedLibFilesBaseUrl})}return a.sort(function(a,b){return a.displayName>b.displayName}),a}var d,e,f,g,h,i,j,k,l,m,n,o,p,q=window,r=document,s="adobe.experienceCloud.debugger",t=s+".pageScript",u=s+".contentScript",v=s+".backgroundScript",w=s+".appScript",x=t,y=Math.floor(1+1e5*Math.random())+""+(new Date).getTime(),z=t+"."+y,A={contentScript:{to:u},backgroundScript:{to:v},appScript:{to:w}},B=q[s].api,C={},D=1,E={},F={_count:0,_handled:{},_listeners:{},on:function(a,b){F._listeners[a]||(F._listeners[a]=[]),F._listeners[a].push(b)},off:function(a,b){var c,d,e=!1;if(F._listeners[a])for(c=0,d=F._listeners[a].length;c<d;c++)if(F._listeners[a][c]===b){F._listeners[a].splice(c,1),e=!0;break}return e},handle:function(a,b,c){var d,e,f,g=!1;if(F._handled[c])return g;if(F._listeners[a])for(d=0,e=F._listeners[a].length;d<e;d++){f=F._listeners[a][d];try{f(b),g=!0}catch(a){}}else g=!0;return F._handled[c]=!0,g},trigger:function(a,b){var c;c=z+"."+ ++F._count,F.handle(a,b,c),i({name:a,data:b,from:z,eventId:c})}},G=s,H={getItem:function(a,b,c){var d;a=a||G,c=c||"_";try{d=JSON.parse(localStorage.getItem(a+c+b))}catch(a){d=null}return d},setItem:function(a,b,c,d){a=a||G,d=d||"_";try{return localStorage.setItem(a+d+b,JSON.stringify(c))}catch(a){return void console.log(a)}},removeItem:function(a,b,c){a=a||G,c=c||"_";try{return localStorage.removeItem(a+c+b)}catch(a){return void console.log(a)}},removeItems:function(a){var b;a=a||G;for(b in localStorage)0===b.indexOf(a)&&localStorage.removeItem(b)}},I=H.getItem(0,"insertDTM");q[s].events=F,h=function(a){a.to!==u&&a.to!==v&&a.to!==w||(a.source=t,q.postMessage(a,"*"))},i=function(a){a.from!==u&&(a.source=t,q.postMessage(a,"*"))},j=function(a,b,c){return function(b){return new Promise(function(d,e){var f={name:a,from:x,to:c.to,pageScriptCallbackId:++D};b&&(f.data=b),E[D]=function(a){d(a)},h(f)})}},k=function(a,b,c){var d;a.to===x?a.pageScriptCallbackId?(d=E[a.pageScriptCallbackId],d&&d(a.data),delete E[a.pageScriptCallbackId]):a.name&&C.pageScript[a.name]&&C.pageScript[a.name](a.data).then(function(b){var c=a.from,d=a.to;a.to=c,a.from=d,a.data=b,h(a)}):a.to===u||a.to===v||a.to===w?h(a):a.name&&a.eventId&&F.handle(a.name,a.data,a.eventId)&&i(a)};for(d in A)if(A.hasOwnProperty(d)){e=A[d],C[d]={};for(g in B[d])B[d].hasOwnProperty(g)&&(f=B[d][g],C[d][g]=j(g,f,e))}C.pageScript={getSummary:function(){var d,e,f,g,h,i,j,k,l,m,n,o={analytics:{instances:[]},target:{instances:[]},audienceManager:{instances:[]},mediaOptimizer:{},visitorService:{instances:[]},dtm:{},launch:{},cookies:[]},p={};if(q.s_c_il)for(d=0,e=q.s_c_il.length;d<e;d++)l=q.s_c_il[d],p[l._c]||(p[l._c]=[]),p[l._c].push(l);if(q.s_c_il)for(d=0,e=q.s_c_il.length;d<e;d++)if(l=q.s_c_il[d],m={},"s_c"===l._c){if(m.library=0===l.version.indexOf("H")||0===l.version.indexOf("G")?"s_code":"AppMeasurement",m.version=l.version,l.visitor&&(m.visitorVersion=l.visitor.version),m.instanceNumber=l._in,m.account=l.account||l.oun||l.un||"",m.pageName=l.pageName||"",m.modules={},p.s_m)for(h in l)for(f=0,g=p.s_m.length;f<g;f++)n=p.s_m[f],l[h]===n&&(m.modules[h]={name:"AppMeasurement_Module_"+h,instanceNumber:n._in});o.analytics.instances.push(m)}else"s_m"===l._c||("Visitor"===l._c?(m.version=l.version,m.instanceNumber=l._in,m.marketingCloudOrgID=l.marketingCloudOrgID||l.namespace,o.visitorService.instances.push(m)):"s_l"===l._c||l._c);if(m={},q.mboxVersion){if(m.library="mbox.js",m.version=q.mboxVersion,q.TNT)for(h in q.TNT){for(i in q.TNT[h])if(q.TNT[h][i].hasOwnProperty("clientCode")&&(k=q.TNT[h][i],m.clientCode=k.clientCode,m.globalMboxName=k.globalMboxName,j=!0),j)break;if(j)break}o.target.library=m}else q.adobe&&q.adobe.target&&(m.library="at.js",m.version=q.adobe.target.VERSION,q.adobe.target.registerExtension&&q.adobe.target.registerExtension({name:s,modules:["settings"],register:function(a){m.clientCode=a.clientCode,m.globalMboxName=a.globalMboxName}}),o.target.library=m);if(q.ttMETA&&(o.target.instances=q.ttMETA),q.DIL&&q.DIL.dils)for(h in q.DIL.dils)0!==h.indexOf("error")&&(l=q.DIL.dils[h],j={partner:!1},m={},m.version=q.DIL.version,l.api&&(l.api.getState&&(k=l.api.getState())&&k.initConfig&&(j.partner=!0,m.partner=k.initConfig.partner,k.initConfig.uuidCookie&&l.helpers&&l.helpers.getCookie&&(m.uuid=l.helpers.getCookie(k.initConfig.uuidCookie.name||"aam_did"))),!j.partner&&l.api.getPartner&&(m.partner=l.api.getPartner()),m.uuid||l.helpers&&l.helpers.getCookie&&(m.uuid=l.helpers.getCookie("aam_did")),m.uuid||(m.uuid="(unavailable)")),o.audienceManager.instances.push(m));return q._satellite&&(b()?(m={},k=q._satellite.configurationSettings,m.version=k.appVersion,m.buildDate=k.buildDate,m.isStaging=k.settings.isStaging,m.libraryName=k.settings.libraryName,m.scriptDir=k.settings.scriptDir,o.dtm.library=m):a()&&(m={},k=q._satellite._container.buildInfo,m.version=k.turbineVersion,m.buildDate=k.buildDate,m.environment=k.environment,k=q._satellite._container.property,m.name=k.name,o.launch.library=m,o.launch.extensions=c())),Promise.resolve(o)},analyzeSatelliteLib:function(){return new Promise(function(a,b){document.querySelector("script[src*=satelliteLib]")})},getLaunchSwitchInformation:function(){var a={};return a.hasLaunch=!!q._satellite&&!!q._satellite._container,a.hasLaunch?a.debug=H.getItem("com.adobe.reactor","debug","."):a.debug=!1,Promise.resolve(a)},setLaunchDebug:function(a){return q._satellite&&(a&&a.debug?H.setItem("com.adobe.reactor","debug",!0,"."):(H.setItem("com.adobe.reactor","debug",!1,"."),H.removeItem("com.adobe.reactor","debug",".")),q.location.reload(!0)),Promise.resolve(!0)},getDTMSwitchInformation:function(){var a={};return a.hasDTM=!!q._satellite&&!!q._satellite.configurationSettings,a.hasDTM?(a.debug=H.getItem("sdsat","debug"),a.stagingLibrary=H.getItem("sdsat","stagingLibrary")):(a.debug=!1,a.stagingLibrary=!1),a.insertDTM=H.getItem(0,"insertDTM"),Promise.resolve(a)},setDebug:function(a){return q._satellite&&(a&&a.debug?H.setItem("sdsat","debug",!0):(H.setItem("sdsat","debug",!1),H.removeItem("sdsat","debug")),q.location.reload(!0)),Promise.resolve(!0)},useStagingLibrary:function(a){var b="stagingLibrary";return q._satellite&&(a&&a.stagingLibrary?H.setItem("sdsat",b,!0):(H.setItem("sdsat",b,!1),H.removeItem("sdsat",b)),q.location.reload(!0)),Promise.resolve(!0)},insertDTM:function(a){var b="insertDTM";return a&&a.insertDTM?H.setItem(0,b,a.insertDTM):(H.setItem(0,b,""),H.removeItem(0,b)),q.location.reload(!0),Promise.resolve(!0)},targetMboxHighlightOn:function(){var a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,t,u,v;if(q.mboxFactoryDefault)q.mboxFactoryDefault.getMboxes&&(a=q.mboxFactoryDefault.getMboxes(),a.each(function(a){var c;if(l="",j=!1,b=a.getName(),d=a.getDiv(),e=d.innerHTML,f=d.id.match("Impo")?"mbox":"mbox-Offer",h="mbox"===f,m="default",g=decodeURI(a.getURL()),n=e.split("&").join("&amp;").split("<").join("&lt;").split(">").join("&gt;").split('"').join("&quot;").split(" ").join("&nbsp;").split("&lt;!--").join("<br><br>&lt;!--").split("--&gt;").join("--&gt;<br>"),b&&q.ttMETA)for(u=0,v=q.ttMETA.length;u<v;u++)if(i=q.ttMETA[u],i.mbox===b){j=i;break}if(j)for(c in j)j.hasOwnProperty(c)&&(l+=c+": "+j[c]+"</br>");else l+="mbox: "+b+'</br>(check if mbox is deactivated and if mboxHighlight plugin is served to "All Mbox Requests")';d.innerHTML='<h2 class="'+s+'.mboxHighlight" style="border: 2px  solid  red;boxShadow: 10px  10px  5px  #888;minHeight: 20px;position: relative;cursor: pointer;color: red!important;z-index: 9999;" >'+l+"</h2>"+e}));else for(c=r.querySelectorAll('div[class*="mbox-name"]'),p=0,t=c.length;p<t;p++){for(l="",j=!1,d=c[p],e=d.innerHTML,n=e.split("&").join("&amp;").split("<").join("&lt;").split(">").join("&gt;").split('"').join("&quot;").split(" ").join("&nbsp;").split("&lt;!--").join("<br><br>&lt;!--").split("--&gt;").join("--&gt;<br>"),k=d.className.split(" "),u=0,v=k.length;u<v;u++)-1!==k[u].indexOf("mbox-name-")&&(b=k[u].replace("mbox-name-",""));if(b&&q.ttMETA)for(u=0,v=q.ttMETA.length;u<v;u++)if(i=q.ttMETA[u],i.mbox===b){j=i;break}if(j)for(o in j)j.hasOwnProperty(o)&&(l+=o+": "+j[o]+"</br>");else l+="mbox: "+b+'</br>(check if mbox is deactivated and if mboxHighlight plugin is served to "All Mbox Requests")';d.innerHTML='<h2 class="'+s+'.mboxHighlight" style="border: 2px  solid  red;boxShadow: 10px  10px  5px  #888;minHeight: 20px;position: relative;cursor: pointer;color: red!important;z-index: 9999;" >'+l+"</h2>"+e}return Promise.resolve(!0)},targetMboxHighlightOff:function(){var a,b,c=r.getElementsByClassName(s+".mboxHighlight");for(b=c.length-1;b>=0;b--)a=c[b],a.parentNode.removeChild(a);return Promise.resolve(!0)}},q.addEventListener("message",function(a){var b=a.data;a.source===q&&b&&b.source&&b.source===u&&(delete b.source,k(b))},!1),q._satellite=q._satellite||{notify:function(){},track:function(){},getVar:function(){},setVar:function(){},getVisitorId:function(){return null},setCookie:function(){},readCookie:function(){},removeCookie:function(){},isLinked:function(){},pageBottom:function(){}},q._satellite.override=q._satellite.override||{},n=function(){var a,b=q._satellite;b.Logger.keepLimit=9999,a=b.notify,b.notify=function(b,c){var d=["log","log","log","info","warn","error"],e={solution:"dtm",solutions:["dtm"],level:d[c],message:""};a(b,c),e.level=e.level||"log",b&&"string"==typeof b&&(e.message=b,-1!==b.indexOf("Adobe Analytics:")?e.solutions.push("analytics"):-1!==b.indexOf("Test & Target:")?e.solutions.push("target"):-1!==b.indexOf("Visitor ID:")?e.solutions.push("visitorService"):-1!==b.indexOf("AdLens:")&&e.solutions.push("mediaOptimizer")),F.trigger("log",e)},I&&(q._satellite.loadScriptSync=function(a){var b,c;a.indexOf('"')>-1&&(a=encodeURI(a)),b=r.createElement("script"),b.async=!1,b.src=a,c=r.body||r.head||r.documentElement,c.appendChild(b)})},function(a){function b(b){if(a&&a[b]&&"function"==typeof a[b]){var c=a[b];a[b]=function(){var d=Array.prototype.slice.call(arguments);c.apply(a,d);var e=d.join(" ");if("string"==typeof e&&0===e.indexOf("🚀")){var f={solution:"launch",solutions:["launch"],level:b,message:e};-1!==e.indexOf("[Adobe Analytics]")?f.solutions.push("analytics"):-1!==e.indexOf("[Adobe Target]")?f.solutions.push("target"):-1!==e.indexOf("[Experience Cloud ID Service]")?f.solutions.push("visitorService"):-1!==e.indexOf("[Adobe Media Optimizer]")&&f.solutions.push("mediaOptimizer"),F.trigger("log",f)}}}}["error","info","log","warn"].forEach(b)}(window.console),q.Object&&q.Object.defineProperty&&q.Object.defineProperty(q._satellite.override,"adobe.experienceCloud.debuggerDTMInitHook",{enumerable:!0,get:function(){return n(),""},set:function(){}}),window.addEventListener("load",function(){b()||a()||delete q._satellite}),I&&(-1!==I.indexOf("<script")?(p=I.match(/src\s*=\s*"(.+?)"/),p.length>1&&(o=p[1])):o=I,l=r.createElement("script"),l.async=function(a){return-1!==a.indexOf("launch-")&&-1!==a.indexOf("async")}(I),o&&0===o.indexOf("//")&&(o="https:"+o),l.src=o,m=r.body||r.head||r.documentElement,m.appendChild(l)),window.___target_traces=window.___target_traces||[];var J=window.___target_traces.push;window.___target_traces.push=function(a){h({name:s+".target.traces",to:w,from:t,data:a}),J.call(this,a)}}();</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Passport Charge Card International | Since 1896</title>
+
+<meta name="robots" content="noindex, nofollow">
+<style type="text/css">
+
+.button2	{
+	border:3px #666600 solid;
+	background-color:#f0f0f0;
+	font:bold 10px Verdana;
+	color:#666600;
+	padding:1px 10px 1px 10px;
+	text-decoration:none;
+}
+
+.button2:hover {
+	color:#003300;
+	border:3px #003300 solid;
+}
+
+
+
+body {
+	color:#666600;
+	font-size:12px; 
+	font-family: Georgia,serif;
+	font-weight:normal;
+	letter-spacing:-1px;
+	line-height:50px;
+	background-color:#003300;	
+}
+
+#wrapper	
+	{
+	
+	width:800px;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+
+#content	
+	{
+	background-color:#fff8dc;
+	width:800px;
+	height:600px;
+	margin:auto;
+	border:#666600 3px solid;
+}
+
+.description	{
+	font-size:50px;
+}
+
+.footer	{
+	font-family:Helvetica,Arial;
+	color:#fff;
+	font-size: 11px;
+	letter-spacing:0px;
+	line-height:15px;
+}
+
+</style>
+</head>
+
+
+<body>
+<div id="wrapper">
+<div id="content">
+<!----------------------><!--start page content--><!---------------------->
+	
+<br> 
+<table border="0" height="250" width="750" style="margin-left:50px;margin-top:30px;">
+
+
+<tbody><tr>
+<td colspan="2">
+<span class="description"><strong>The GEO CARD</strong></span><br>
+<span class="description"><strong>by Passport Charge Card</strong></span><br>
+<span style="font-size:15px;font-family:verdana;">Amortize that lunch over 80 years</span>
+</td>
+</tr>
+
+<tr><td>
+<table>
+<tbody><tr>
+<td>
+<!--	<img src="./charge_card3_files/charge_site.png" class="photo">  -->
+</td>
+</tr>
+</tbody></table>
+</td>
+
+
+
+<!---Form Start--->
+<td>
+<div class="form1">
+</div><table>
+
+<tbody><tr>
+<td>
+<span><strong>Geo Charge Card Application</strong></span>
+</td>
+</tr>
+
+
+<form></form>
+<tr>
+<td class="search">
+Estimated Credit Score:
+</td>
+<td>
+<select>
+  <option>300-399</option>
+  <option>400-499</option>
+  <option>500-599</option>
+  <option>600-699</option>
+  <option>700-749</option>
+  <option selected="selected">750-799</option>
+  <option>800-850</option>	
+</select>
+</td>
+</tr>
+
+<tr>
+<td class="search">
+National Identification Number: 
+</td>
+<td>
+<input type="text" name="lastname" class="textinput" value="1234567890">
+</td>
+</tr>
+
+<tr>
+<td class="search">
+Other Necessary Stuff:
+</td>
+<td>
+<input type="text" name="address1" class="textinput" value="9876543210">
+</td>
+
+</tr><tr>
+<td>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+</td>
+</tr>
+
+<tr>
+<td>
+</td>
+<td>
+<a href="javascript:history.back()" class="button2">Complete Application</a>
+	<br><a href="javascript:history.back()" style="font: 14px Helvetica,Arial;color:#000">(Back to Geometrixx)</a>
+
+</td>
+</tr>
+
+<tr height="30">
+<td>
+</td>
+<td>
+</td>
+</tr>
+
+
+
+
+
+	
+
+
+
+</tbody></table>
+</td>
+
+</tr></tbody></table>
+
+
+
+
+<!---Form End--->
+
+</div>
+<!--start footer-->
+<div class="footer">
+This site is property of Passport Charge Card, a third-party site. You can't set your own SiteCatalyst code on this site. Try to if you don't believe me, but you can't.
+</div>
+</div>
+<!--End footer-->
+
+
+
+
+</body></html>

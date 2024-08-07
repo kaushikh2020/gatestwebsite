@@ -1,0 +1,20 @@
+
+Creating a Conditional Page Load Rule - Product View
+
+s.products=";" + _satellite.getVar('ProductName');
+
+_satellite.notify(s.products)//for debugging purposes
+
+
+
+
+Populating the Product Variable - Purchase
+
+s.products=""; 
+
+for (var i=0;i<digitalData.cart.item.length;i++){ 
+s.products=s.products+";"+digitalData.cart.item[i].productName+";" 
++digitalData.cart.item[i].quantity+";"+digitalData.cart.item[i].productPrice+","; 
+
+_satellite.notify(s.products,1)//for debugging purposes, to run for each loop 
+}
